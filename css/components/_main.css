@@ -1,0 +1,18 @@
+.paginate__input {
+  border: 1px solid #e5e5e7;
+  outline: none;
+  padding: 5px; 
+}
+
+.paginate button {
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.paginate {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}

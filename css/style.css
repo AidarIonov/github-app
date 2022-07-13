@@ -1,8 +1,16 @@
 @import './components/__header.css';
 @import './components/_select.css';
+@import './components/_main-item.css';
+@import './components/_loader.css';
+@import './components/_main.css';
 
 :root {
   --font-family: 'Montserrat', sans-serif;
+  --green: #008744;
+  --blue: #0057e7;
+  --red: #d62d20;
+  --yellow: #ffa700;
+  --white: #eee;
 }
 
 * {
@@ -24,4 +32,26 @@ body {
   max-width: 1200px;
   width: 100%;
   padding: 0 20px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.pagination__btn {
+  padding: 10px;
+  border: 1px solid #3D3E40;
+  border: none;
+  cursor: pointer;
+}
+
+.pagination__btn.active {
+  color: #fff;
+  background-color: #3D3E40;
 }
