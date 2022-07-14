@@ -1,21 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./css/style.css" />
-    <title>Github Users</title>
-  </head>
-  <body>
-    <!-- <header class="header">
-      <div class="container header__container">
+const Header =  {
+  render: async () => {
+    return (
+      `<div class="container header__container">
         <div class="header__title">
           <h1><a href="index.html">Search for Github users</a></h1>
           <input
@@ -64,13 +50,12 @@
             </fieldset>
           </div>
         </div>
-      </div>
-    </header> -->
+      </div>`
+    )
+  },
 
-    <header id="header" class="header"></header>
-    <div id="root"></div>
+  after_render: async () => {}
 
-    <script src="index.js" type="module"></script>
-    <!-- <script src="./module/view.js" type="module"></script> -->
-  </body>
-</html>
+}
+
+export default Header

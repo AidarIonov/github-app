@@ -1,4 +1,32 @@
-import { API } from './module/api.js';
+import { parseRequestUrl } from './module/utils.js';
+import Header from './module/views/components/Header.js';
+import Home from './module/views/pages/Home.js';
+import UserInfo from './module/views/pages/UserInfo.js';
 
-// const api = new API();
-// const view = new View(api);
+const routes = {
+  '/': Home,
+  '/user/:id': UserInfo,
+};
+
+const router = async () => {
+  // Lazy load view element:
+  const header = null || document.getElementById('header');
+  const content = null || document.getElementById('root');
+
+  header.innerHTML = await Header.render();
+  await Header.after_render();
+  const { resource, id, verb } = parseRequestUrl();
+
+  const parsedUrl =
+    (resource ? '/' + resource : '/') +
+    (id ? '/:id' : '') +
+    (verb ? '/' + verb : '');
+
+  const page = routes[parsedUrl];
+  content.innerHTML = await page.render();
+  await page.after_render();
+};
+
+window.addEventListener('hashchange', router);
+
+window.addEventListener('load', router);

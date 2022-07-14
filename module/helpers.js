@@ -7,7 +7,7 @@ export const createItemBlock = (item) => {
           <h3>${item.login}</h3>
           <a target='_blank' href="${item.html_url}">Link to github</a>
           </div>
-          <a class='item__link' data-login='${item.login}' href="#">Show repositories</a>
+          <a class='item__link' data-link data-login='${item.login}' href="/#/user/${item.login}">Show repositories</a>
           </div>`;
 };
 

@@ -21,13 +21,13 @@ export const API = {
     }
   },
 
-  async loadUserData(user) {
+  async loadUserData(user, options) {
     const urls = [
       `${API_URL}users/${user}/following`,
       `${API_URL}users/${user}/followers`,
       `${API_URL}users/${user}/repos`,
     ];
-    const requests = urls.map((url) => fetch(url));
+    const requests = urls.map((url) => fetch(url, options));
     return Promise.all(requests).then((responses) =>
       Promise.all(responses.map((r) => r.json()))
     );
