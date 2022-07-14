@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Github Users</title>
+  </head>
+  <body id='repos'>
+    <header class="header">
+      <div class="container header__container">
+        <div class="header__title">
+          <h1>
+            <a href="index.html">Search for Github users</a>
+          </h1>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <div class="container">
+        <div class="repos-owner"></div>
+        <div class="repos">
+           <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+              <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="paginate">
+        <button class="prev-page">< prev</button>
+        <input class='paginate__input' type="number" value='1' min='1'>
+        <button class="next-page">next ></button>
+      </div> -->
+    </main>
+    <script src="index.js" type="module"></script>
+  </body>
+</html>

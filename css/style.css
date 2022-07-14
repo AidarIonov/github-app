@@ -27,6 +27,12 @@ body {
   font-style: normal;
 }
 
+.main {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .container {
   margin: 0 auto;
   max-width: 1200px;

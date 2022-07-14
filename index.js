@@ -1,8 +1,4 @@
-import { API, API_URL } from './module/api.js';
-import { Search } from './module/search.js';
-import { View } from './module/view.js';
+import { API } from './module/api.js';
 
-const api = new API();
-const view = new View(api);
-const search = new Search();
-view.renderUsers();
+// const api = new API();
+// const view = new View(api);
