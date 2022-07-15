@@ -9,27 +9,22 @@ export const API = {
   },
 
   async loadUsers(userPerPage, page) {
-    try {
-      const res = await fetch(
-        `${API_URL}users?per_page=${userPerPage}&since=${page}`
-      );
-      document.querySelector('.loader').style.display = 'none';
-      return res.json();
-    } catch (e) {
-      document.querySelector('.users__list').innerHTML =
-        '<h2>Oops! Something went wrong</h2>';
-    }
+    const res = await fetch(
+      `${API_URL}users?per_page=${userPerPage}&since=${page}`
+    );
+    document.querySelector('.loader').style.display = 'none';
+    return res.json();
   },
 
-  async loadUserData(user, options) {
+  async loadUserData(user, page, per_page, sort, order) {
     const urls = [
-      `${API_URL}users/${user}/following`,
-      `${API_URL}users/${user}/followers`,
-      `${API_URL}users/${user}/repos`,
+      // `${API_URL}users/${user}/following`,
+      // `${API_URL}users/${user}/followers`,
+      `${API_URL}users/${user}/repos?page=${page}&per_page=${per_page}&sort=${sort}&direction=${order}`,
     ];
-    const requests = urls.map((url) => fetch(url, options));
+    const requests = urls.map((url) => fetch(url));
     return Promise.all(requests).then((responses) =>
-      Promise.all(responses.map((r) => r.json()))
+      Promise.all(responses.map((res) => res.json()))
     );
   },
 };

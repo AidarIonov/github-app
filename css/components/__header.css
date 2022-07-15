@@ -15,6 +15,7 @@
 .header__inputs {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -35,6 +36,13 @@
   padding: 6px;
 }
 
+.header__per-page input {
+  border: none;
+  padding: 9px 15px;
+  border-radius: 5px;
+  outline: none;
+}
+
 #search {
   border: 1px solid #e5e5e7;
   padding: 12px 15px;
@@ -42,13 +50,18 @@
   outline: none;
 }
 
-.header input {
-  border: none;
-  padding: 9px 15px;
-  border-radius: 5px;
-  outline: none;
-}
+
 
 #search:focus {
   outline: 1px solid #757577;
+}
+
+@media screen and (max-width: 580px) {
+  .header__container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  #search {
+    width: 100%;
+  }
 }

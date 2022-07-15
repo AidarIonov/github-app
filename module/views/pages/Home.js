@@ -1,5 +1,5 @@
-import { API } from "../../api.js";
-import { debounce, createItemBlock } from "../../helpers.js";
+import { API } from '../../api.js';
+import { debounce, createItemBlock, handlePaginate } from '../../helpers.js';
 
 const Home = {
   render: async () => {
@@ -24,12 +24,12 @@ const Home = {
         </div>
       </div>
     </div>
+    </main>
     <div class="paginate">
-      <button class="prev-page">< prev</button>
-      <input class="paginate__input" type="number" value="1" min="1" />
-      <button class="next-page">next ></button>
-    </div>
-  </main>
+        <button class="prev-page">< prev</button>
+        <input class="paginate__input" type="number" value="1" min="1" />
+        <button class="next-page">next ></button>
+      </div>
     `;
   },
   after_render: async () => {
@@ -46,7 +46,7 @@ const Home = {
     const renderUsers = async (list) => {
       try {
         usersList.innerHTML = '';
-        if (!list?.length) {
+        if (list?.length === 0) {
           usersList.innerHTML = '<h2>Users not found!</h2>';
         } else {
           list.map((item) => {
@@ -54,7 +54,9 @@ const Home = {
           });
         }
       } catch (e) {
-        console.log(e);
+        usersList.innerHTML =
+          '<h2>Oops! Something went wrong. Try it later</h2>';
+        usersCounter.textContent = '';
       }
     };
 
@@ -95,21 +97,6 @@ const Home = {
       }
     };
 
-    const displayUserInfo = async (login) => {
-      const info = await API.loadUserData(login);
-      const owner = document.createElement('div');
-      owner.innerHTML = createItemBlock(info[2][0].owner);
-      document.querySelector('.repos').append(owner);
-      // console.log(createItemBlock(info[2][0].owner));
-    };
-
-    document.addEventListener('click', (e) => {
-      if (e.target.classList[0] === 'item__link') {
-        const userLogin = e.target.getAttribute('data-login');
-        displayUserInfo(userLogin);
-      }
-    });
-
     document.addEventListener('click', (event) => {
       if (event.target.classList[0] === 'prev-page') {
         if (currentPage < 1) {
@@ -137,10 +124,10 @@ const Home = {
       debounce(setUserPerPage.bind(this), 500)
     );
 
-    searchInput.addEventListener('input', debounce(findUsers.bind(this), 500));
-    sortInput.addEventListener('input', debounce(findUsers.bind(this), 500));
-    orderInput.addEventListener('input', debounce(findUsers.bind(this), 500));
-    displayAllUsers()
+    searchInput.addEventListener('input', debounce(findUsers, 500));
+    sortInput.addEventListener('input', debounce(findUsers, 500));
+    orderInput.addEventListener('input', debounce(findUsers, 500));
+    displayAllUsers();
   },
 };
 export default Home;

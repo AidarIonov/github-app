@@ -25,12 +25,22 @@ body {
   font-family: var(--font-family);
   font-weight: 400;
   font-style: normal;
+  height: 100%;
 }
 
-.main {
+#root {
   height: 80vh;
   display: flex;
   flex-direction: column;
+}
+
+.main {
+  flex: 1 0 auto;
+}
+
+.error-title {
+  margin-top: 100px;
+  text-align: center;
 }
 
 .container {
@@ -43,21 +53,4 @@ body {
 a {
   text-decoration: none;
   color: inherit;
-}
-.pagination {
-  display: flex;
-  justify-content: center;
-  gap: 5px;
-}
-
-.pagination__btn {
-  padding: 10px;
-  border: 1px solid #3D3E40;
-  border: none;
-  cursor: pointer;
-}
-
-.pagination__btn.active {
-  color: #fff;
-  background-color: #3D3E40;
 }

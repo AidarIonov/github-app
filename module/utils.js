@@ -12,7 +12,7 @@
     verb: params[2] || null
   };
 
-  console.log('(App) Parsed url:', request);
+  // console.log('Parsed url:', request);
 
   return request;
 };
