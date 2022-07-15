@@ -44,7 +44,7 @@ const UserInfo = {
         </div>
         <div class="header__per-page">
           <fieldset>
-            <input id="repos-per-page" type="number" value="7" min="1" />
+            <input id="repos-per-page" type="number" value="6" min="1" />
             <legend>Per page</legend>
           </fieldset>
         </div>
@@ -96,9 +96,9 @@ const UserInfo = {
             .map((item) => {
               return `<div class="block__item repos__item">
                     <h4><a target="_blank" href="${item.html_url}">${
-                      item.full_name.split('/')[1]
-                    }</a></h4>
-              <a href="#" class="item__link">Go to github</a>
+                item.full_name.split('/')[1]
+              }</a></h4>
+              <a href="#" class="btn-link">Go to github</a>
                   </div>`;
             })
             .join('');

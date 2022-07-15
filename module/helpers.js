@@ -1,13 +1,13 @@
 export const createItemBlock = (item) => {
   return `<div class='block__item'>
           <div class="img_container">
-            <img src='${item.avatar_url}' alt="" />
+            <img src='${item.avatar_url}' alt="Avatar" />
           </div>
           <div class="text-block">
           <h3>${item.login}</h3>
           <a target='_blank' href="${item.html_url}">Link to github</a>
           </div>
-          <a class='item__link' href="/#/user/${item.login}">Show repositories</a>
+          <a class='btn-link user__link' href="/#/user/${item.login}">Show repositories</a>
           </div>`;
 };
 

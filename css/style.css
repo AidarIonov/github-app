@@ -46,8 +46,17 @@ body {
 .container {
   margin: 0 auto;
   max-width: 1200px;
+  height: 100%;
   width: 100%;
   padding: 0 20px;
+}
+
+.notfound__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
 }
 
 a {

@@ -28,15 +28,18 @@
   object-fit:cover;
 }
 
-.item__link {
+.btn-link {
   display: block;
   padding: 5px 10px;
   background-color:  #3D3E40;
   color: #fff;
   font-weight: 500;
   border-radius: 5px;
+}
+.user__link {
   align-self: end;
   justify-self: end;
+
 }
 
 .repos__item {

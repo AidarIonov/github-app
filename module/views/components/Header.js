@@ -3,7 +3,7 @@ const Header =  {
     return (
       `<div class="container header__container">
         <div class="header__title">
-          <h1><a href="/">Search for Github users</a></h1>
+          <h1><a href="#">Search for Github users</a></h1>
           <input
             id="search"
             type="search"

@@ -1,5 +1,6 @@
 import { parseRequestUrl } from './module/utils.js';
 import Header from './module/views/components/Header.js';
+import Error404 from './module/views/pages/404.js';
 import Home from './module/views/pages/Home.js';
 import UserInfo from './module/views/pages/UserInfo.js';
 
@@ -22,7 +23,7 @@ const router = async () => {
     (id ? '/:id' : '') +
     (verb ? '/' + verb : '');
 
-  const page = routes[parsedUrl];
+  const page = routes[parsedUrl] || Error404;
   content.innerHTML = await page.render();
   await page.after_render();
 };
