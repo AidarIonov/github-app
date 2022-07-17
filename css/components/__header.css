@@ -1,5 +1,7 @@
 .header {
   padding: 20px 0;
+  border: 1px solid #e5e5e7;
+  margin-bottom: 30px;
 }
 
 .header__title h1 {
@@ -48,6 +50,11 @@
   padding: 12px 15px;
   border-radius: 5px;
   outline: none;
+}
+
+.list li {
+  font-size: 18px;
+  font-weight: 500;
 }
 
 

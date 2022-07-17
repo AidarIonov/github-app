@@ -1,5 +1,5 @@
 import { API } from '../../api.js';
-import { createItemBlock, debounce, handlePaginate } from '../../helpers.js';
+import { createItemBlock, debounce } from '../../helpers.js';
 import { parseRequestUrl } from '../../utils.js';
 
 const UserInfo = {
@@ -67,11 +67,7 @@ const UserInfo = {
           </div>
         </div>
         </main>
-        <div class="paginate">
-        <button class="prev-page">< prev</button>
-        <input class="paginate__input" type="number" value="1" min="1" />
-        <button class="next-page">next ></button>
-      </div>
+        <button class="loadMore-btn">Load more</button>
     `;
   },
 
@@ -95,10 +91,10 @@ const UserInfo = {
           reposWrapper.innerHTML += list
             .map((item) => {
               return `<div class="block__item repos__item">
-                    <h4><a target="_blank" href="${item.html_url}">${
-                item.full_name.split('/')[1]
-              }</a></h4>
-              <a href="#" class="btn-link">Go to github</a>
+                    <h4>${item.full_name.split('/')[1]}</h4>
+              <a target="_blank" href="${
+                item.html_url
+              }" class="btn-link">Go to github</a>
                   </div>`;
             })
             .join('');
@@ -126,8 +122,11 @@ const UserInfo = {
     };
 
     perPageInput.addEventListener('input', debounce(setUserPerPage, 500));
-    sortInput.addEventListener('input', debounce(fetchAndDisplayRepos, 500));
-    orderInput.addEventListener('input', debounce(fetchAndDisplayRepos, 500));
+    document.addEventListener('input', (e) => {
+      if (e.target.id === 'repos-sort' || e.target.id === 'repos-order') {
+        fetchAndDisplayRepos();
+      }
+    });
     fetchAndDisplayRepos();
   },
 };

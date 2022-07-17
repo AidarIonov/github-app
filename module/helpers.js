@@ -21,19 +21,5 @@ export const debounce = (callback, wait) => {
 };
 
 export const handlePaginate = (func, value) => {
-  document.addEventListener('click', (event) => {
-    let currentPage;
-    if (event.target.classList[0] === 'prev-page') {
-      if (currentPage < 1) {
-        currentPage = 1;
-      }
-      currentPage -= 1;
-      currentPage = value;
-      func();
-    } else if (event.target.classList[0] === 'next-page') {
-      currentPage += 1;
-      currentPage = value;
-      func();
-    }
-  });
+  
 };

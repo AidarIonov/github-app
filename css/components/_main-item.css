@@ -6,11 +6,10 @@
   gap: 20px;
   padding: 20px;
   border: 1px solid #e5e5e7;
-  margin: 20px 0;
+  margin-bottom: 20px;
+  margin-top: 10px;
   border-radius: 10px;
 }
-
-
 .block__item h3 {
   margin-bottom: 10px;  
 }

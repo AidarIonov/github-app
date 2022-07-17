@@ -1,5 +1,5 @@
 import { API } from '../../api.js';
-import { debounce, createItemBlock, handlePaginate } from '../../helpers.js';
+import { debounce, createItemBlock } from '../../helpers.js';
 
 const Home = {
   render: async () => {
@@ -56,7 +56,7 @@ const Home = {
       } catch (e) {
         usersList.innerHTML =
           '<h2>Oops! Something went wrong. Try it later</h2>';
-        usersCounter.textContent = '';
+          usersCounter.textContent = '';
       }
     };
 
