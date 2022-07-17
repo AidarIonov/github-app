@@ -1,6 +1,23 @@
+.users__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.main__inputs, .main__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.main__header {
+  margin-bottom: 30px;
+}
 
 .paginate__input {
-  border: 1px solid #e5e5e7;
+  border: 1px solid var(--gray);
   outline: none;
   padding: 5px; 
 }
@@ -25,12 +42,8 @@
   justify-content: space-between;
 }
 
-.loadMore-btn {
-  display: block;
+.repos__btn {
   margin: 0 auto;
-  padding: 5px 12px;
-  border: 1px solid #e5e5e7;
-  background: transparent;
-  cursor: pointer;
-  flex: 0 0 auto;
+  max-width: 300px
+  width: 100%;
 }

@@ -10,7 +10,7 @@ const UserInfo = {
         <div class="repos__owner">
         </div>
         <div class="repos__header">
-        <div class="header__inputs">
+        <div class="main__inputs">
         <div class="select">
           <select id="repos-sort">
             <option>Created</option>
@@ -67,7 +67,7 @@ const UserInfo = {
           </div>
         </div>
         </main>
-        <button class="loadMore-btn">Load more</button>
+        <a target="_blank" class="btn-link repos__btn">More repositories in github</a>
     `;
   },
 
@@ -76,12 +76,14 @@ const UserInfo = {
       sortInput = document.getElementById('repos-sort'),
       orderInput = document.getElementById('repos-order'),
       perPageInput = document.getElementById('repos-per-page'),
-      reposOwnerWrapper = document.querySelector('.repos__owner');
+      reposOwnerWrapper = document.querySelector('.repos__owner'),
+      moreReposBtn = document.querySelector('.repos__btn');
     let currentPage = 1;
     const params = parseRequestUrl();
 
     const renderRepos = async (list) => {
       reposOwnerWrapper.innerHTML = createItemBlock(list[0].owner);
+      moreReposBtn.href = list[0].owner.html_url
       try {
         reposWrapper.innerHTML = '';
         if (!list.length) {

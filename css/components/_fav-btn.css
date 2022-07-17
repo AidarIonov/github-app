@@ -1,0 +1,16 @@
+.favorite-button {
+  cursor: pointer;
+}
+
+.favorite-button:hover:after, .favorite-button.active:after {
+  content: ' \2606';
+}
+
+.favorite-button.active:after {
+  content: ' \2605';
+}
+
+.favorite-button.active:hover:after {
+  content: ' \2606';
+}
+

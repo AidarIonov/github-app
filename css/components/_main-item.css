@@ -1,15 +1,25 @@
 .block__item {
-  display: grid;
-  grid-template-columns: auto auto 1fr;
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
   align-items: center;
   gap: 20px;
   padding: 20px;
-  border: 1px solid #e5e5e7;
+  border: 1px solid var(--gray);
   margin-bottom: 20px;
   margin-top: 10px;
   border-radius: 10px;
 }
+
+.user__buttons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 .block__item h3 {
   margin-bottom: 10px;  
 }

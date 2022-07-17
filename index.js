@@ -17,12 +17,9 @@ const router = async () => {
 
   header.innerHTML = await Header.render();
   await Header.after_render();
-  const { resource, id, verb } = parseRequestUrl();
+  const { resource, id } = parseRequestUrl();
 
-  const parsedUrl =
-    (resource ? '/' + resource : '/') +
-    (id ? '/:id' : '') +
-    (verb ? '/' + verb : '');
+  const parsedUrl = (resource ? '/' + resource : '/') + (id ? '/:id' : '');
 
   const page = routes[parsedUrl] || Error404;
   content.innerHTML = await page.render();
