@@ -1,6 +1,6 @@
 export const createItemBlock = (item) => {
   const favorites = getLocalStorage('favorites');
-  const itemFavorite = favorites.find(fav => fav.id === item.id)
+  const itemFavorite = favorites.find((fav) => fav.id === item.id);
   return `<div class='block__item'>
           <div class="img_container">
             <img src='${item.avatar_url}' alt="Avatar" />
@@ -11,15 +11,13 @@ export const createItemBlock = (item) => {
           </div>
           <div class="user__buttons">
           ${
-            itemFavorite ? (
-             ` <span data-id="${item.id}" class="favorite-button active">
+            itemFavorite
+              ? ` <span data-id="${item.id}" class="favorite-button active">
                 In favorites
               </span>`
-            ) : (
-              `<span data-id="${item.id}" class="favorite-button">
+              : `<span data-id="${item.id}" class="favorite-button">
                 Mark as favorite
               </span>`
-            )
           }
           <a class='btn-link user__link' href="/#/user/${
             item.login

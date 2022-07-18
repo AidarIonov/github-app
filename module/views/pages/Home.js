@@ -50,7 +50,7 @@ const Home = {
       />
     </svg>
   </div>
-  <div class="header__per-page">
+  <div class="per-page-input">
     <fieldset>
       <input id="per_page" type="number" value="9" min="1" />
       <legend>Per page</legend>
@@ -60,8 +60,8 @@ const Home = {
   </div>
       <div class="users">
       <span class="counter"></span>
-      <div class="users__list"></div>
-        <div class="loader">
+      <div class="users__list">
+      <div class="loader">
           <svg class="circular" viewBox="25 25 50 50">
             <circle
               class="path"
@@ -73,7 +73,7 @@ const Home = {
               stroke-miterlimit="10"
             />
           </svg>
-        </div>
+        </div></div>
       </div>
     </div>
     </main>
@@ -94,7 +94,7 @@ const Home = {
       paginateInput = document.querySelector('.paginate__input');
 
     let currentPage = 1;
-    let initializeFavoriteList = [];
+    let usersArray = [];
     let favorites = getLocalStorage('favorites') || [];
 
     document.addEventListener('click', (e) => {
@@ -102,7 +102,7 @@ const Home = {
         const id = parseInt(e.target.dataset.id);
         const inFavoriteExists = favorites.find((item) => item.id === id);
         if (inFavoriteExists === undefined) {
-          const user = initializeFavoriteList.find((item) => item.id === id);
+          const user = usersArray.find((item) => item.id === id);
           favorites.push(user);
           e.target.classList.add('active');
           e.target.textContent = 'In favorites';
@@ -118,16 +118,17 @@ const Home = {
     const renderUsers = async () => {
       try {
         usersList.innerHTML = '';
-        if (initializeFavoriteList?.length === 0) {
-          usersList.innerHTML = '<h2>Users not found!</h2>';
+        if (usersArray?.length === 0) {
+          usersList.innerHTML = '<h2 class="error-title">Users not found!</h2>';
         } else {
-          initializeFavoriteList.map((item) => {
+          usersArray.map((item) => {
             usersList.innerHTML += createItemBlock(item);
           });
         }
       } catch (e) {
+        console.log(e);
         usersList.innerHTML =
-          '<h2>Oops! Something went wrong. Try it later</h2>';
+          '<h2 class="error-title">Oops! Something went wrong. Try it later</h2>';
         usersCounter.textContent = '';
       }
     };
@@ -137,7 +138,7 @@ const Home = {
         usersPerPageInput.value,
         currentPage - 1
       );
-      initializeFavoriteList = users;
+      usersArray = users;
       renderUsers();
     };
 
@@ -150,7 +151,7 @@ const Home = {
           order: orderInput.value.toLowerCase(),
         });
         usersCounter.textContent = `Total found users: ${response.total_count}`;
-        initializeFavoriteList = response.items;
+        usersArray = response.items;
         renderUsers();
       } else {
         displayAllUsers();
@@ -193,10 +194,7 @@ const Home = {
       }
     });
 
-    usersPerPageInput.addEventListener(
-      'input',
-      debounce(setUserPerPage.bind(this), 500)
-    );
+    usersPerPageInput.addEventListener('input', debounce(setUserPerPage, 500));
 
     searchInput.addEventListener('input', debounce(findUsers, 500));
     sortInput.addEventListener('input', debounce(findUsers, 500));

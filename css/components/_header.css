@@ -11,37 +11,6 @@
 }
 
 
-.header__per-page {
-  position: relative;
-}
-.header__per-page legend {
-  font-size: 12px;
-  padding: 0 5px;
-  line-height: 0;
-  color: #757577;
-}
-
-.header__per-page fieldset {
-  border: 1px solid var(--gray);
-  border-radius: 5px;
-  z-index: -1;
-  padding: 6px;
-}
-
-.header__per-page input {
-  border: none;
-  padding: 9px 15px;
-  border-radius: 5px;
-  outline: none;
-}
-
-#search {
-  border: 1px solid var(--gray);
-  padding: 12px 15px;
-  border-radius: 5px;
-  outline: none;
-}
-
 .list li {
   font-size: 18px;
   font-weight: 500;

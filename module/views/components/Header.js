@@ -1,4 +1,4 @@
-import { getLocalStorage } from "../../helpers.js";
+import { getLocalStorage } from '../../helpers.js';
 
 const Header = {
   render: async () => {
@@ -6,21 +6,13 @@ const Header = {
           <h1><a href="#">Search for Github users</a></h1>
         <ul class="list">
           <li>
-            <a href="/#/favorites">(${getLocalStorage('favorites').length}) Favorites</a>
+            <a href="/#/favorites">Favorites</a>
           </li>
         </ul>
       </div>`;
   },
 
-  after_render: async () => {
-    // const inputs = document.querySelector('.header__inputs'),
-    //   searchInput = document.getElementById('search');
-
-    // if (window.location.hash) {
-    //   inputs.style.display = 'none';
-    //   searchInput.style.display = 'none';
-    // }
-  },
+  after_render: async () => {},
 };
 
 export default Header;

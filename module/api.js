@@ -8,7 +8,6 @@ export const API = {
   },
 
   async loadUsers(userPerPage, page) {
-    document.querySelector('.loader').style.display = 'none';
     return (
       await fetch(`${API_URL}users?per_page=${userPerPage}&since=${page}`)
     ).json();

@@ -1,6 +1,4 @@
-/**
-@return {Object} 
- */
+
  export const parseRequestUrl = () => {
   const path = location.hash.slice(2).toLowerCase() || '/';
 
@@ -10,8 +8,6 @@
     resource: params[0] || null,
     id: params[1] || null,
   };
-
-  console.log('Parsed url:', request);
 
   return request;
 };

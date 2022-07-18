@@ -42,7 +42,7 @@ const UserInfo = {
             />
           </svg>
         </div>
-        <div class="header__per-page">
+        <div class="per-page-input">
           <fieldset>
             <input id="repos-per-page" type="number" value="6" min="1" />
             <legend>Per page</legend>
@@ -82,17 +82,15 @@ const UserInfo = {
     const params = parseRequestUrl();
 
     const renderRepos = async (list) => {
-      reposOwnerWrapper.innerHTML = createItemBlock(list[0].owner);
-      moreReposBtn.href = list[0].owner.html_url
       try {
         reposWrapper.innerHTML = '';
         if (!list.length) {
           reposWrapper.innerHTML =
             '<h2 class="error-title">Repos not found!</h2>';
         } else {
-          reposWrapper.innerHTML += list
+          list
             .map((item) => {
-              return `<div class="block__item repos__item">
+              reposWrapper.innerHTML += `<div class="block__item repos__item">
                     <h4>${item.full_name.split('/')[1]}</h4>
               <a target="_blank" href="${
                 item.html_url
@@ -102,6 +100,7 @@ const UserInfo = {
             .join('');
         }
       } catch (e) {
+        console.log(e);
         reposWrapper.innerHTML =
           '<h2 class="error-title">Oops! Something went wrong!</h2>';
       }
@@ -115,15 +114,20 @@ const UserInfo = {
         sortInput.value.toLowerCase(),
         orderInput.value.toLowerCase()
       );
+      reposOwnerWrapper.innerHTML = createItemBlock(repos[0].owner);
+      moreReposBtn.href = repos[0].owner.html_url;
+      const title = document.createElement('h2')
+      title.textContent = `${repos[0].owner.login}'s repositories`
+      document.querySelector('.repos__header').append(title)
       renderRepos(repos);
     };
 
-    const setUserPerPage = (event) => {
+    const handleUserPerPage = (event) => {
       perPageInput.value = event.target.valueAsNumber;
       fetchAndDisplayRepos();
     };
 
-    perPageInput.addEventListener('input', debounce(setUserPerPage, 500));
+    perPageInput.addEventListener('input', debounce(handleUserPerPage, 500));
     document.addEventListener('input', (e) => {
       if (e.target.id === 'repos-sort' || e.target.id === 'repos-order') {
         fetchAndDisplayRepos();

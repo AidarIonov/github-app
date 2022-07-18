@@ -10,7 +10,6 @@ const Error404 = {
         </main>
     `;
   },
-
   after_render: async () => {},
 };
 
