@@ -1,5 +1,5 @@
 export const createItemBlock = (item) => {
-  const favorites = getLocalStorage('favorites');
+  const favorites = getLocalStorage('favorites') || [];
   const itemFavorite = favorites.find((fav) => fav.id === item.id);
   return `<div class='block__item'>
           <div class="img_container">

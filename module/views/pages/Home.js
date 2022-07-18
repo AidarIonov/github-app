@@ -118,7 +118,7 @@ const Home = {
     const renderUsers = async () => {
       try {
         usersList.innerHTML = '';
-        if (usersArray?.length === 0) {
+        if (!usersArray?.length) {
           usersList.innerHTML = '<h2 class="error-title">Users not found!</h2>';
         } else {
           usersArray.map((item) => {

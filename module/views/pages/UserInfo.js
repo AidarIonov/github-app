@@ -116,9 +116,6 @@ const UserInfo = {
       );
       reposOwnerWrapper.innerHTML = createItemBlock(repos[0].owner);
       moreReposBtn.href = repos[0].owner.html_url;
-      const title = document.createElement('h2')
-      title.textContent = `${repos[0].owner.login}'s repositories`
-      document.querySelector('.repos__header').append(title)
       renderRepos(repos);
     };
 
